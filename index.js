@@ -8,19 +8,19 @@ let persons = [
       id: 1
     },
     {
-        name: "Ada Lovelace",
-        number: "459328329",
-        id: 2
+      name: "Ada Lovelace",
+      number: "459328329",
+      id: 2
     },
     {
-        name: "Dan Abramov",
-        number: "88983277",
-        id: 3
+      name: "Dan Abramov",
+      number: "88983277",
+      id: 3
     },
     {
-        name: "Mary Poppendieck",
-        number: "38923892",
-        id: 4
+      name: "Mary Poppendieck",
+      number: "38923892",
+      id: 4
     }
   ]
 
@@ -44,6 +44,13 @@ let persons = [
     } else {
       res.status(404).end()
     }
+  })
+
+  app.delete('/api/persons/:id', (req, res) => {
+    const id = Number(req.params.id)
+    persons = persons.filter(p => p.id !== id)
+  
+    res.status(204).end()
   })
   
   const PORT = 3001
